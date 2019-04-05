@@ -1,0 +1,87 @@
+instalacion 3.0
+
+https://calnus.com/2016/12/12/uniendo-gnu-linux-a-nuestro-active-directory-mediante-samba-y-sssd/
+
+sudo apt install krb5-user samba sssd ntp
+
+Kerberos:
+
+sudo nano /etc/krb5.conf
+
+[libdefaults]
+default_realm = EXAMPLE.COM
+ticket_lifetime = 24h #
+renew_lifetime = 7d
+
+
+Configuración de Samba:
+
+sudo nano /etc/samba/smb.conf
+
+[global]
+workgroup = EXAMPLE
+client signing = yes
+client use spnego = yes
+kerberos method = secrets and keytab
+realm = EXAMPLE.COM
+security = ads
+
+[allusers]
+  comment = All Users
+  path = /home/shares/allusers
+  valid users = @users
+  force group = users
+  create mask = 0660
+  directory mask = 0771
+  writable = yes
+
+[homes]
+   comment = Home Directories
+   browseable = no
+   valid users = %S
+   writable = yes
+   create mask = 0700
+   directory mask = 0700
+
+
+SSSD:
+
+sudo nano /etc/sssd/sssd.conf
+
+[sssd]
+services = nss, pam
+config_file_version = 2
+domains = EXAMPLE.COM
+
+[domain/EXAMPLE.COM]
+id_provider = ad
+access_provider = ad
+
+# Use this if users are being logged in at /.
+# This example specifies /home/DOMAIN-FQDN/user as $HOME.  Use with pam_mkhomedir.so
+override_homedir = /home/%d/%u
+
+# Uncomment if the client machine hostname doesn't match the computer object on the DC.
+# ad_hostname = 
+
+# Uncomment if DNS SRV resolution is not working
+# ad_server = 
+
+# Uncomment if the AD domain is named differently than the Samba domain
+# ad_domain = 
+
+# Enumeration is discouraged for performance reasons.
+# enumerate = true
+
+
+sudo chown root:root /etc/sssd/sssd.conf
+sudo chmod 600 /etc/sssd/sssd.conf
+
+sudo systemctl restart ntp
+sudo systemctl restart smbd nmbd
+
+sudo kinit Administrator
+
+sudo klist
+
+sudo net ads join -k
