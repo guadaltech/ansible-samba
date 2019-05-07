@@ -1,6 +1,0 @@
-https://linoxide.com/ubuntu-how-to/setup-ubuntu-active-directory-domain-controller-samba/
-
-https://dokk.org/library/Ubuntu_Server_Guide_2018
-
-sudo apt update && sudo apt upgrade -y
-
