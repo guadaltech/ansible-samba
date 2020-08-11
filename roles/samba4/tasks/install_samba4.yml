@@ -80,6 +80,7 @@
 - name: Start of services for your configuration
   systemd:
     state: started
+    masked: no
     name: "{{ item }}"
   with_items:
     - samba-ad-dc.service
