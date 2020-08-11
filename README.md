@@ -7,6 +7,10 @@ If need do a integratión with Linux and Mac os, You deploy the recipe of ansibl
 Links of resources of references:
 
 https://www.tecmint.com/install-samba4-active-directory-ubuntu/
+
 https://www.tecmint.com/manage-samba4-active-directory-linux-command-line/
+
 https://www.tecmint.com/manage-samba4-ad-from-windows-via-rsat/
+
 https://www.tecmint.com/integrate-ubuntu-to-samba4-ad-dc-with-sssd-and-realm/
+
