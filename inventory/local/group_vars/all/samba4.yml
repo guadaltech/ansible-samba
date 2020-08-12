@@ -1,5 +1,5 @@
 ---
-kerberos_client_dns_lookup_realm: "false"
-kerberos_client_dns_lookup_kdc: "true"
-reverse_zone: "10.45.10"
-reverse_reverse_zone: "10.45.10"
+    kerberos_client_dns_lookup_realm: "false"
+    kerberos_client_dns_lookup_kdc: "true"
+    reverse_zone: "1.168.192"
+    reverse_reverse_zone: "1.168.192"

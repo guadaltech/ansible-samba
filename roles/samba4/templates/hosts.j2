@@ -1,4 +1,3 @@
 127.0.0.1	localhost
-{{hostvars["node-1"].ansible_all_ipv4_addresses[1]}} {{ name_node }} {{ name_node }}.{{ domain }}
-{{hostvars["node-1"].ansible_all_ipv4_addresses[1]}}	{{ domain }}
-{{hostvars["node-2"].ansible_host}}	{{ client_sssd }} {{ client_sssd }}.{{ domain }}
+{{hostvars["node-1"].ansible_all_ipv4_addresses[0]}} {{ name_node }} {{ name_node }}.{{ domain }}
+{{hostvars["node-1"].ansible_all_ipv4_addresses[0]}}	{{ domain }}

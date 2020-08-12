@@ -3,8 +3,3 @@
   gather_facts: true
   roles:
     - samba4
-
-- hosts: sssd
-  gather_facts: true
-  roles:
-    - sssd
